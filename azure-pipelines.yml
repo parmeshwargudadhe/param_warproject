@@ -20,3 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**/*.war'  # Specify the pattern to match the generated WAR file
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
